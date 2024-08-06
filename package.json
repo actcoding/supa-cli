@@ -30,8 +30,8 @@
     "typescript": "^5.5.4"
   },
   "peerDependencies": {
-    "@supabase/supabase-js": "^2.45.0",
-    "supabase": "^1.187.10"
+    "@supabase/supabase-js": "^2.40.0",
+    "supabase": "^1.180.0"
   },
   "dependencies": {
     "@inquirer/confirm": "^3.1.20",
