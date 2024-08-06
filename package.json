@@ -1,0 +1,54 @@
+{
+  "name": "@actcoding/supa-cli",
+  "description": "Advanced CLI tooling for Supabase.",
+  "version": "0.1.0",
+  "module": "cli/index.ts",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actcoding/supa-cli.git"
+  },
+  "scripts": {
+    "build": "bun build ./cli/index.ts --compile --outfile=dist/supa-cli --target bun --format esm",
+    "gen:actions": "bun run scripts/gen-actions.ts",
+    "gen:supabase-api": " generate -i https://api.supabase.com/api/v1-json -o cli/generated/supabase-api -g typescript-fetch"
+  },
+  "files": [
+    "./cli/"
+  ],
+  "bin": {
+    "supa": "./cli/index.ts"
+  },
+  "devDependencies": {
+    "@actcoding/eslint-config": "^0.0.5",
+    "@types/bun": "^1.1.6",
+    "@types/mjml": "^4.7.4",
+    "@types/node": "^20.0.0",
+    "@types/pg": "^8.11.6",
+    "eslint": "^9.8.0",
+    "glob": "^11.0.0",
+    "typescript": "^5.5.4"
+  },
+  "peerDependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "supabase": "^1.187.10"
+  },
+  "dependencies": {
+    "@inquirer/confirm": "^3.1.20",
+    "@inquirer/input": "^2.2.7",
+    "@inquirer/password": "^2.1.20",
+    "commander": "^12.1.0",
+    "dayjs": "^1.11.12",
+    "dotenv": "^16.4.5",
+    "hast": "^1.0.0",
+    "hast-util-select": "^6.0.2",
+    "jose": "^5.6.3",
+    "mjml": "^4.15.3",
+    "node-pg-migrate": "^7.6.0",
+    "pg": "^8.12.0",
+    "rehype": "^13.0.1",
+    "rehype-preset-minify": "^7.0.0",
+    "rehype-stringify": "^10.0.0",
+    "zod": "^3.23.8"
+  }
+}

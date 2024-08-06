@@ -1,0 +1,48 @@
+
+<mjml>
+  <mj-body background-color="#f1f5f9">
+    <mj-section background-color="#ffffff">
+      <mj-column>
+
+        <mj-image width="192px" src="/resources/brand-assets/supabase-logo-wordmark--light.svg"></mj-image>
+        <mj-divider border-color="#3ECF8E"></mj-divider>
+
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff">
+    	<mj-column>
+      	<mj-text font-size="20px" color="#3ECF8E" font-weight="bold">Hello World</mj-text>
+        <mj-text>
+        	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        </mj-text>
+
+        <mj-text>
+        	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff">
+      <mj-column>
+
+        <mj-divider border-color="#3ECF8E"></mj-divider>
+        <mj-text align="center">
+          Footer
+        </mj-text>
+
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+
+        <mj-text align="center" font-size="11px">
+          Copyright (c) [NAME] [YEAR]
+        </mj-text>
+
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
+
