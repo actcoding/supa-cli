@@ -1,3 +1,5 @@
+#!/usr/bin/env bun
+
 import 'dotenv/config'
 
 import confirm from '@inquirer/confirm'
