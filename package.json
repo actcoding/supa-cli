@@ -14,7 +14,8 @@
     "gen:supabase-api": " generate -i https://api.supabase.com/api/v1-json -o cli/generated/supabase-api -g typescript-fetch"
   },
   "files": [
-    "./cli/"
+    "./cli/",
+    "config.schema.json"
   ],
   "bin": {
     "supa": "./cli/index.ts"

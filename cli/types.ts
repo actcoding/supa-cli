@@ -1,6 +1,10 @@
 import { Command } from 'commander'
 import { z } from 'zod'
 
+export type Config = {
+    typeFiles: string[]
+}
+
 export const globalOptionsSchema = z.object({
     verbose: z.boolean().default(false),
     force: z.boolean().default(false),

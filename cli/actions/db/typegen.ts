@@ -1,6 +1,7 @@
 import { writeFile } from 'fs/promises'
 import type { GlobalOptions, Installer } from '../../types'
 import { action, supabase } from '../../utils'
+import config from '@/config'
 
 type Options = GlobalOptions & {
 }
@@ -15,12 +16,7 @@ const installer: Installer = program => {
 export default installer
 
 export async function generateTypes(opts: Options): Promise<void> {
-    const files = [
-        'db.ts',
-        'src/db.ts',
-        'supabase/db.ts',
-        'supabase/functions/db.ts',
-    ]
+    const files = config.typeFiles
 
     const cmd = [
         'gen',
