@@ -49,7 +49,6 @@ export async function exec(command: string, args: string[], opts: ExecOptions): 
             }
         })
 
-        proc.stderr.on('data', data => process.stderr.write(data))
         proc.once('close', () => resolve(opts.captureStdout ? stdout : undefined))
         proc.once('error', reject)
     })
