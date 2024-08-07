@@ -8,6 +8,7 @@ import { version } from '../package.json'
 import actions from './actions'
 import { sortCommands } from './actions/list'
 import { supabaseStart, supabaseStatus } from './utils'
+import { oraPromise } from 'ora'
 
 program.version(version)
     .showHelpAfterError()
@@ -40,7 +41,7 @@ if (!process.env.CI) {
             default: true,
         })
         if (answer) {
-            await supabaseStart()
+            await oraPromise(supabaseStart(), { text: 'Starting local Supabase …' })
         } else {
             console.error('The CLI does not work without a local Supabase environment!')
             process.exit(1)
