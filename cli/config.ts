@@ -2,7 +2,7 @@ import type { Config } from '@/types'
 import { readFile, stat } from 'fs/promises'
 import { join } from 'path'
 
-const locations = [
+export const locations = [
     ['.config', 'supa-cli.json'],
     ['supabase', 'supa-cli.json'],
     ['supa-cli.json'],

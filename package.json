@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@actcoding/eslint-config": "^0.0.5",
+    "@inquirer/select": "^2.4.7",
     "@types/bun": "^1.1.6",
     "@types/ejs": "^3.1.5",
     "@types/mjml": "^4.7.4",
