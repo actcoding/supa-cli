@@ -11,7 +11,7 @@ theme:
   name: material
   favicon: _assets/icon-192.png
   # logo: _assets/icon-192.png
-  logo: _assets/supabase-logo-icon.svg
+  logo: _assets/heroicons-command-line.svg
   features:
     - navigation.instant
     - navigation.footer
