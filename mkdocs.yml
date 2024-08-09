@@ -14,9 +14,15 @@ theme:
   logo: _assets/supabase-logo-icon.svg
   features:
     - navigation.instant
+    - navigation.footer
     - content.action.edit
+    - content.code.copy
   palette:
     scheme: act
+  custom_dir: docs/overrides
+
+extra:
+  generator: true
 
 plugins:
   - search
@@ -28,6 +34,7 @@ extra_css:
   - _css/extra.css
 
 markdown_extensions:
+  - admonition
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true

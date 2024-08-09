@@ -1,5 +1,9 @@
 # Configuration
 
+!!! warning
+
+    Before configuring the CLI, make sure to set the [**required environment variables**](01-installation.md#environment).
+
 While the CLI generally follows a *zero-config* approach, there are options you might want to configure.
 
 ## Location
@@ -18,7 +22,7 @@ The config file is a plain JSON file.
 
 We provide a JSON schema which you may use, e.g.:
 
-```json
+```json title=".config/supa-cli.json"
 {
     "$schema": "../node_modules/@actcoding/supa-cli/config.schema.json",
     // ...
