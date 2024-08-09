@@ -1,3 +1,6 @@
+[![CI](https://github.com/actcoding/supa-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/actcoding/supa-cli/actions/workflows/ci.yml)
+[![Docs](https://github.com/actcoding/supa-cli/actions/workflows/docs.yml/badge.svg)](https://github.com/actcoding/supa-cli/actions/workflows/docs.yml)
+
 # @actcoding/supa-cli
 
 > Advanced CLI tooling for Supabase.
