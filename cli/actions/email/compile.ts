@@ -30,7 +30,7 @@ type Options = GlobalOptions & {
 
 const installer: Installer = program => {
     program.command('email:compile')
-        .description('Compile and optionally deploy email templates.')
+        .description('Compile and optionally deploy email templates')
         .addOption(
             new Option('--deploy', 'Enable deployment to linked Supabase project. (Implies --linked)')
                 .implies({ linked: true, })

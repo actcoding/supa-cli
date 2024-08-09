@@ -11,7 +11,7 @@ type Options = GlobalOptions & {
 
 const installer: Installer = program => {
     program.command('config:generate')
-        .description('Generates a configuration file.')
+        .description('Generates a configuration file')
         .action(action<Options>(async ({ opts }) => {
             try {
                 await stat(configFile)

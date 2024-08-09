@@ -8,7 +8,7 @@ type Options = GlobalOptions & {
 
 const installer: Installer = program => {
     program.command('config:print')
-        .description('Prints the effective config object.')
+        .description('Prints the effective config object')
         .action(action<Options>(async () => {
             //@ts-ignore
             delete config['$schema']

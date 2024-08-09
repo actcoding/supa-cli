@@ -92,7 +92,7 @@ type Options = GlobalOptions & {}
 
 const installer: Installer = program => {
     program.command('email:configure')
-        .description('Helps with configuring email templates.')
+        .description('Helps with configuring email templates')
         .action(action<Options>(async ({ opts }) => {
             await mkdir(directory, { recursive: true })
 

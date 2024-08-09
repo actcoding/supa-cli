@@ -7,7 +7,7 @@ type Options = GlobalOptions & {
 
 const installer: Installer = program => {
     program.command('status')
-        .description('supabase status but with --linked support.')
+        .description('supabase status but with --linked support')
         .action(action<Options>(async ({ opts }) => {
             const props = await supabaseStatus(opts.linked)
             log(props)
