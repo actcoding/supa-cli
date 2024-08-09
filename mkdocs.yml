@@ -5,6 +5,8 @@ site_dir: .docs
 
 repo_url: https://github.com/actcoding/supa-cli
 
+remote_branch: main
+
 theme:
   name: material
   favicon: _assets/icon-192.png
