@@ -1,8 +1,34 @@
 import type { Config } from '@/types'
-import { readFile } from 'fs/promises'
+import { readFile, stat } from 'fs/promises'
 import { join } from 'path'
 
-async function load<T>(file: string): Promise<T> {
+const locations = [
+    ['.config', 'supa-cli.json'],
+    ['supabase', 'supa-cli.json'],
+    ['supa-cli.json'],
+]
+
+async function selectFile(): Promise<string|undefined> {
+    for await (const location of locations) {
+        try {
+            const path = join(...location)
+            const { isFile } = await stat(path)
+            if (isFile()) {
+                return join(process.cwd(), path)
+            }
+        } catch (error) {
+            continue
+        }
+    }
+
+    return undefined
+}
+
+async function load<T>(file?: string): Promise<T> {
+    if (file === undefined) {
+        return {} as T
+    }
+
     try {
         const buffer = await readFile(file)
         return JSON.parse(buffer.toString('utf8'))
@@ -17,7 +43,7 @@ const defaults: Config = {
     ],
 }
 
-const configFile = join(process.cwd(), '.config', 'supa-cli.json')
+const configFile = await selectFile()
 const data = await load<Config>(configFile)
 
 const config = Object.assign({}, defaults, data)
