@@ -7,12 +7,14 @@ on:
     paths:
       - docs/**
       - .github/workflows/docs.yml
+      - mkdocs.yml
   pull_request:
     branches:
       - main
     paths:
       - docs/**
       - .github/workflows/docs.yml
+      - mkdocs.yml
   workflow_dispatch:
 
 jobs:
