@@ -32,7 +32,7 @@ program.commands = sortCommands(program)
 
 
 // ensure local Supabase environment
-if (!process.env.CI) {
+if (!process.env.CI && !process.env.__SCRIPT) {
     try {
         await supabaseStatus(false)
     } catch (error) {
@@ -49,5 +49,8 @@ if (!process.env.CI) {
     }
 }
 
+if (!process.env.__SCRIPT) {
+    await program.parseAsync(process.argv)
+}
 
-await program.parseAsync(process.argv)
+export { program }
