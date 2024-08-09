@@ -11,7 +11,9 @@
   "scripts": {
     "build": "bun build ./cli/index.ts --compile --outfile=dist/supa-cli --target bun --format esm",
     "gen:actions": "bun run scripts/gen-actions.ts",
-    "gen:supabase-api": " generate -i https://api.supabase.com/api/v1-json -o cli/generated/supabase-api -g typescript-fetch"
+    "gen:supabase-api": " generate -i https://api.supabase.com/api/v1-json -o cli/generated/supabase-api -g typescript-fetch",
+    "docs:serve": "./.venv/bin/mkdocs serve",
+    "docs:build": "./.venv/bin/mkdocs build"
   },
   "files": [
     "./cli/",
@@ -23,13 +25,20 @@
   "devDependencies": {
     "@actcoding/eslint-config": "^0.0.5",
     "@types/bun": "^1.1.6",
+    "@types/ejs": "^3.1.5",
     "@types/mjml": "^4.7.4",
     "@types/node": "^20.0.0",
     "@types/pg": "^8.11.6",
+    "@types/slug": "^5.0.8",
     "docsify-cli": "^4.4.4",
+    "ejs": "^3.1.10",
     "eslint": "^9.8.0",
     "glob": "^11.0.0",
-    "typescript": "^5.5.4"
+    "remark-parse": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "slug": "^9.1.0",
+    "typescript": "^5.5.4",
+    "unified": "^11.0.5"
   },
   "peerDependencies": {
     "@supabase/supabase-js": "^2.40.0",

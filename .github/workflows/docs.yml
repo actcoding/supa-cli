@@ -1,0 +1,75 @@
+name: Docs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - docs/
+  pull_request:
+    branches:
+      - main
+    paths:
+      - docs/
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - uses: actions/cache/restore@v4
+        id: cache
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('bun.lockb') }}
+
+      - name: Install dependencies (bun)
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: bun install --frozen-lockfile
+
+      - uses: actions/cache/save@v4
+        if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('bun.lockb') }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies (python)
+        run: pip install -r requirements.txt
+
+      - name: Generate documentation
+        run: bun run scripts/gen-actions-docs.ts --force
+
+      - name: Build
+        run: mkdocs build
+
+      - name: Upload artifact for deployment
+        uses: actions/upload-pages-artifact@v3
+        if: github.event_name == 'push'
+        with:
+          path: .docs/
+
+  deploy:
+    name: Deploy to GH Pages
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    if: github.event_name == 'push'
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

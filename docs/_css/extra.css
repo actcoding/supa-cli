@@ -1,0 +1,19 @@
+[data-md-color-scheme="act"] {
+    --md-primary-fg-color:        #7303c0;
+    --md-primary-fg-color--light: #7303c0cc;
+    --md-primary-fg-color--dark:  #7303c0;
+
+    --md-accent-fg-color: #ec38bc;
+    --md-accent-fg-color--transparent: #ec38bc19;
+
+    --md-default-fg-color: #7303c0;
+    --md-default-fg-color--light: #7303c0;
+    --md-default-fg-color--lighter: #7303c0;
+    --md-default-fg-color--lightest: #7303c0;
+
+    --md-footer-fg-color: #03001e;
+    --md-footer-fg-color--light: #03001ecc;
+    --md-footer-fg-color--lighter: #03001e99;
+    --md-footer-bg-color: #fdeff9;
+    --md-footer-bg-color--dark: #fdeff9;
+}
