@@ -27,3 +27,7 @@ https://actcoding.github.io/supa-cli/
 - i18n for emails
 - tests
 - use something other than `commander.js`
+
+## License
+
+[MIT](LICENSE)

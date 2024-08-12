@@ -2,6 +2,7 @@
   "name": "@actcoding/supa-cli",
   "description": "Advanced CLI tooling for Supabase.",
   "version": "0.1.0",
+  "license": "MIT",
   "module": "./dist/index.js",
   "type": "module",
   "homepage": "https://actcoding.github.io/supa-cli/",
