@@ -13,7 +13,6 @@
     "url": "https://github.com/actcoding/supa-cli/issues"
   },
   "scripts": {
-    "prepack": "npm run build",
     "build": "rm -rf dist && tsc -p tsconfig.build.json && tsc-alias -v -p tsconfig.build.json",
     "gen:actions": "bun run scripts/gen-actions.ts",
     "gen:supabase-api": " generate -i https://api.supabase.com/api/v1-json -o cli/generated/supabase-api -g typescript-fetch",
@@ -29,6 +28,9 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "engines": {
+    "node": ">=14.8"
   },
   "devDependencies": {
     "@actcoding/eslint-config": "^0.0.5",

@@ -7,6 +7,8 @@ on:
     paths-ignore:
       - docs/**
       - mkdocs.yml
+    tags:
+      - "v*.*.*"
   pull_request:
     branches:
       - main
@@ -42,4 +44,41 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('bun.lockb') }}
 
       - name: Build
-        run: bunx tsc
+        run: bun run build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+    if: startsWith('refs/tags/', github.ref)
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+
+      - id: extract-changelog
+        uses: sean0x42/markdown-extract@v2
+        with:
+          file: CHANGELOG.md
+          pattern: ${{ github.ref_name }}
+          no-print-matched-heading: true
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          body: |
+            ## Changelog
+            ${{ steps.extract-changelog.outputs.markdown }}
