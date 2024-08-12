@@ -40,7 +40,6 @@
     "@types/node": "^20.0.0",
     "@types/pg": "^8.11.6",
     "@types/slug": "^5.0.8",
-    "docsify-cli": "^4.4.4",
     "ejs": "^3.1.10",
     "eslint": "^9.8.0",
     "remark-parse": "^11.0.0",
