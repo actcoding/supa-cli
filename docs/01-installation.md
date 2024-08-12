@@ -4,8 +4,7 @@
 
     We recommend using [Bun](https://bun.sh) as your package manager.
 
-    While other package managers might technically work too, we only use Bun for testing.
-    Additionally, the pure TypeScript files are shipped in the current packages's state.
+    While other package managers will probably work too, we only use Bun for testing.
 
 ## Environment
 

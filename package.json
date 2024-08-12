@@ -2,31 +2,40 @@
   "name": "@actcoding/supa-cli",
   "description": "Advanced CLI tooling for Supabase.",
   "version": "0.1.0",
-  "module": "cli/index.ts",
+  "module": "./dist/index.js",
   "type": "module",
+  "homepage": "https://actcoding.github.io/supa-cli/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actcoding/supa-cli.git"
+    "url": "git://github.com/actcoding/supa-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/actcoding/supa-cli/issues"
   },
   "scripts": {
-    "build": "bun build ./cli/index.ts --compile --outfile=dist/supa-cli --target bun --format esm",
+    "prepack": "npm run build",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json && tsc-alias -v -p tsconfig.build.json",
     "gen:actions": "bun run scripts/gen-actions.ts",
     "gen:supabase-api": " generate -i https://api.supabase.com/api/v1-json -o cli/generated/supabase-api -g typescript-fetch",
     "docs:serve": "./.venv/bin/mkdocs serve",
     "docs:build": "./.venv/bin/mkdocs build"
   },
   "files": [
-    "./cli/",
+    "./dist/",
     "config.schema.json"
   ],
   "bin": {
-    "supa": "./cli/index.ts"
+    "supa": "./dist/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "devDependencies": {
     "@actcoding/eslint-config": "^0.0.5",
     "@inquirer/select": "^2.4.7",
     "@types/bun": "^1.1.6",
     "@types/ejs": "^3.1.5",
+    "@types/hast": "^3.0.4",
     "@types/mjml": "^4.7.4",
     "@types/node": "^20.0.0",
     "@types/pg": "^8.11.6",
@@ -34,10 +43,10 @@
     "docsify-cli": "^4.4.4",
     "ejs": "^3.1.10",
     "eslint": "^9.8.0",
-    "glob": "^11.0.0",
     "remark-parse": "^11.0.0",
     "remark-stringify": "^11.0.0",
     "slug": "^9.1.0",
+    "tsc-alias": "^1.8.10",
     "typescript": "^5.5.4",
     "unified": "^11.0.5"
   },
@@ -52,7 +61,7 @@
     "commander": "^12.1.0",
     "dayjs": "^1.11.12",
     "dotenv": "^16.4.5",
-    "hast": "^1.0.0",
+    "glob": "^11.0.0",
     "hast-util-select": "^6.0.2",
     "jose": "^5.6.3",
     "mjml": "^4.15.3",

@@ -1,7 +1,7 @@
+import { globalOptionsSchema, type Installer } from '@/types.js'
+import { action } from '@/utils.js'
 import { z } from 'zod'
-import { countMigrations, migrate } from '.'
-import { globalOptionsSchema, type Installer } from '../../types'
-import { action } from '../../utils'
+import { countMigrations, migrate } from './index.js'
 
 const total = await countMigrations()
 

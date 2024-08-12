@@ -1,9 +1,9 @@
+import type { GlobalOptions, Installer } from '@/types.js'
+import { action, supabaseStatus } from '@/utils.js'
 import { glob } from 'glob'
 import { default as runner, type RunnerOption } from 'node-pg-migrate'
 import type { MigrationDirection } from 'node-pg-migrate/dist/types'
 import { resolve } from 'path'
-import type { GlobalOptions, Installer } from '../../types'
-import { action, supabaseStatus } from '../../utils'
 
 type Options = GlobalOptions & {
     seed: boolean
@@ -45,7 +45,7 @@ export async function migrate(direction: MigrationDirection, linked: boolean = f
 }
 
 export async function seed(name: string = 'seed', linked: boolean = false) {
-    const { seed } = await import(`../../../supabase/seeders/${name}`)
+    const { seed } = await import(`${process.cwd()}/supabase/seeders/${name}`)
     await seed(linked)
 }
 

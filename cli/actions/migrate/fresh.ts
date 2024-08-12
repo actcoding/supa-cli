@@ -1,6 +1,6 @@
-import { countMigrations, migrate } from '.'
-import type { GlobalOptions, Installer } from '../../types'
-import { action } from '../../utils'
+import type { GlobalOptions, Installer } from '@/types.js'
+import { action } from '@/utils.js'
+import { countMigrations, migrate } from './index.js'
 
 type Options = GlobalOptions & {}
 

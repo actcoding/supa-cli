@@ -1,11 +1,9 @@
-import { log } from 'console'
-import type { GlobalOptions, Installer } from '../../types'
-import { action } from '../../utils'
-import { writeFile } from 'fs/promises'
-import { join, resolve } from 'path'
-import { mkdir } from 'fs/promises'
-import { stat } from 'fs/promises'
+import type { GlobalOptions, Installer } from '@/types.js'
+import { action } from '@/utils.js'
 import assert from 'assert'
+import { log } from 'console'
+import { mkdir, stat, writeFile } from 'fs/promises'
+import { join, resolve } from 'path'
 
 const config = `
 [auth.email.template.invite]

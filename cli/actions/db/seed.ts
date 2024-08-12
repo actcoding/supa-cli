@@ -1,6 +1,6 @@
-import type { GlobalOptions, Installer } from '../../types'
-import { action } from '../../utils'
-import { seed } from '../migrate'
+import type { GlobalOptions, Installer } from '@/types.js'
+import { action } from '@/utils.js'
+import { seed } from '../migrate/index.js'
 
 type Options = GlobalOptions & {
     seeder?: string

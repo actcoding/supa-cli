@@ -1,22 +1,22 @@
-import type { InstallerModule } from './types'
+import type { InstallerModule } from '@/types.js'
 
 const actions: InstallerModule[] = [
-    await import('./actions/status.ts'),
-    await import('./actions/list.ts'),
-    await import('./actions/auth/jwt.ts'),
-    await import('./actions/migrate/rollback.ts'),
-    await import('./actions/migrate/status.ts'),
-    await import('./actions/migrate/index.ts'),
-    await import('./actions/migrate/redo.ts'),
-    await import('./actions/migrate/fresh.ts'),
-    await import('./actions/make/migrations.ts'),
-    await import('./actions/config/print.ts'),
-    await import('./actions/config/generate.ts'),
-    await import('./actions/db/seed.ts'),
-    await import('./actions/db/typegen.ts'),
-    await import('./actions/db/reset.ts'),
-    await import('./actions/email/compile.ts'),
-    await import('./actions/email/configure.ts')
+    await import('@/actions/status.js'),
+    await import('@/actions/list.js'),
+    await import('@/actions/auth/jwt.js'),
+    await import('@/actions/migrate/rollback.js'),
+    await import('@/actions/migrate/status.js'),
+    await import('@/actions/migrate/index.js'),
+    await import('@/actions/migrate/redo.js'),
+    await import('@/actions/migrate/fresh.js'),
+    await import('@/actions/make/migrations.js'),
+    await import('@/actions/config/print.js'),
+    await import('@/actions/config/generate.js'),
+    await import('@/actions/db/seed.js'),
+    await import('@/actions/db/typegen.js'),
+    await import('@/actions/db/reset.js'),
+    await import('@/actions/email/compile.js'),
+    await import('@/actions/email/configure.js')
 ]
 
 export default actions

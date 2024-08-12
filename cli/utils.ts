@@ -1,7 +1,10 @@
+import type { GlobalOptions, SupabaseStatus } from '@/types.js'
 import { spawn } from 'child_process'
 import { Command } from 'commander'
 import { readFile } from 'fs/promises'
-import type { GlobalOptions, SupabaseStatus } from './types'
+import pg from 'pg'
+
+export const { Client } = pg
 
 type Action = Parameters<InstanceType<typeof Command>['action']>[0]
 
@@ -92,4 +95,11 @@ export async function supabaseStatus(linked: boolean): Promise<SupabaseStatus> {
 
     const result = await supabase(['status', '-o', 'json'], { captureStdout: true }) as Buffer
     return JSON.parse(result.toString('utf8')) as SupabaseStatus
+}
+
+export async function version(): Promise<string> {
+    const file = import.meta.resolve('../package.json').substring(7)
+    const buffer = await readFile(file)
+    const data = JSON.parse(buffer.toString('utf8'))
+    return data.version as string
 }

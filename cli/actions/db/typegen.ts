@@ -1,7 +1,7 @@
+import config from '@/config.js'
+import type { GlobalOptions, Installer } from '@/types.js'
+import { action, supabase } from '@/utils.js'
 import { writeFile } from 'fs/promises'
-import type { GlobalOptions, Installer } from '../../types'
-import { action, supabase } from '../../utils'
-import config from '@/config'
 
 type Options = GlobalOptions & {
 }

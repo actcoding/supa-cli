@@ -2,15 +2,14 @@
 
 import 'dotenv/config'
 
+import actions from '@/actions.js'
+import { sortCommands } from '@/actions/list.js'
+import { supabaseStart, supabaseStatus, version } from '@/utils.js'
 import confirm from '@inquirer/confirm'
 import { program } from 'commander'
-import { version } from '../package.json'
-import actions from './actions'
-import { sortCommands } from './actions/list'
-import { supabaseStart, supabaseStatus } from './utils'
 import { oraPromise } from 'ora'
 
-program.version(version)
+program.version(await version())
     .showHelpAfterError()
     .configureHelp({
         showGlobalOptions: true,

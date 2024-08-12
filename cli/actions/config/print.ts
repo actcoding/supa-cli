@@ -1,6 +1,6 @@
-import config from '@/config'
-import type { GlobalOptions, Installer } from '@/types'
-import { action } from '@/utils'
+import config from '@/config.js'
+import type { GlobalOptions, Installer } from '@/types.js'
+import { action } from '@/utils.js'
 import { log } from 'console'
 
 type Options = GlobalOptions & {

@@ -1,7 +1,6 @@
-import { log } from 'console'
-import { version } from '../../package.json'
-import type { Installer } from '../types'
+import type { Installer } from '@/types.js'
 import { Command } from 'commander'
+import { log } from 'console'
 
 type List = {
     application: {
@@ -60,7 +59,7 @@ const installer: Installer = program => {
             const list: List = {
                 application: {
                     name: 'Supa-charged CLI',
-                    version,
+                    version: program.version() as string,
                 },
                 namespaces: namespaces.map(id => {
                     return {

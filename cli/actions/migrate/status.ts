@@ -1,9 +1,8 @@
+import type { GlobalOptions, Installer } from '@/types.js'
+import { action, Client, supabaseStatus } from '@/utils.js'
 import { log, table } from 'console'
 import dayjs from 'dayjs'
-import { Client } from 'pg'
-import { countMigrations } from '.'
-import type { GlobalOptions, Installer } from '../../types'
-import { action, supabaseStatus } from '../../utils'
+import { countMigrations } from './index.js'
 
 type Row = {
     name: string

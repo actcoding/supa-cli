@@ -1,4 +1,4 @@
-import type { Config } from '@/types'
+import type { Config } from '@/types.js'
 import { readFile, stat } from 'fs/promises'
 import { join } from 'path'
 

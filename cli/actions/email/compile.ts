@@ -1,7 +1,10 @@
+import type { GlobalOptions, Installer } from '@/types.js'
+import { action, supabaseProjectRef } from '@/utils.js'
+import { Option } from 'commander'
 import { log } from 'console'
 import { readFile, writeFile } from 'fs/promises'
 import { glob } from 'glob'
-import { type Root } from 'hast'
+import type { Root } from 'hast'
 import { selectAll } from 'hast-util-select'
 import mjml2html from 'mjml'
 import type { MJMLParseResults, MJMLParsingOptions } from 'mjml-core'
@@ -9,9 +12,6 @@ import { basename, join, resolve } from 'path'
 import { rehype } from 'rehype'
 import rehypeMinify from 'rehype-preset-minify'
 import rehypeStringify from 'rehype-stringify'
-import { type GlobalOptions, type Installer } from '../../types'
-import { action, supabaseProjectRef } from '../../utils'
-import { Option } from 'commander'
 
 const directory = resolve('supabase/emails')
 

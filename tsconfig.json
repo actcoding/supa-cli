@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "composite": true,
-
     // Enable latest features
     "lib": [
       "ESNext",
@@ -14,9 +12,9 @@
 
     // Bundler mode
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,
+    "declaration": false,
 
     // Best practices
     "strict": true,
@@ -27,7 +25,6 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false,
-    "resolveJsonModule": true,
 
     // Cleaner imports
     "baseUrl": "./",

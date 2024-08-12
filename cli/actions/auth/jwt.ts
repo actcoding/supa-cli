@@ -1,10 +1,10 @@
+import type { GlobalOptions, Installer } from '@/types.js'
+import { action, supabaseStatus } from '@/utils.js'
 import input from '@inquirer/input'
 import password from '@inquirer/password'
 import { createClient } from '@supabase/supabase-js'
 import { log } from 'console'
 import { decodeJwt } from 'jose'
-import type { GlobalOptions, Installer } from '../../types'
-import { action, supabaseStatus } from '../../utils'
 
 type Options = GlobalOptions & {
     decode: boolean

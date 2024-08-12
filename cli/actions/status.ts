@@ -1,5 +1,5 @@
-import type { GlobalOptions, Installer } from '@/types'
-import { action, supabaseStatus } from '@/utils'
+import type { GlobalOptions, Installer } from '@/types.js'
+import { action, supabaseStatus } from '@/utils.js'
 import { log } from 'console'
 
 type Options = GlobalOptions & {

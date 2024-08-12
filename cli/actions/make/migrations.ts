@@ -1,10 +1,9 @@
+import type { Installer } from '@/types.js'
 import { log } from 'console'
 import dayjs from 'dayjs'
-import { writeFile } from 'fs/promises'
+import { mkdir, writeFile } from 'fs/promises'
 import { resolve } from 'path'
-import type { Installer } from '../../types'
-import { MIGRATIONS_DIRECTORY } from '../migrate'
-import { mkdir } from 'fs/promises'
+import { MIGRATIONS_DIRECTORY } from '../migrate/index.js'
 
 const template = `
 import { ColumnDefinitions, MigrationBuilder } from 'node-pg-migrate'

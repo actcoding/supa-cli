@@ -1,7 +1,7 @@
-import type { GlobalOptions, Installer } from '../../types'
-import { action, bunx } from '../../utils'
-import { migrate, seed } from '../migrate'
-import { generateTypes } from './typegen'
+import type { GlobalOptions, Installer } from '@/types.js'
+import { action, bunx } from '@/utils.js'
+import { migrate, seed } from '../migrate/index.js'
+import { generateTypes } from './typegen.js'
 
 type Options = GlobalOptions & {
     migrate: boolean
