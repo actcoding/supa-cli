@@ -14,7 +14,7 @@ async function handleExisting(path: string): Promise<boolean> {
     try {
         await stat(path)
         const answer = await confirm({
-            message: 'A config file already exists. Overwrite?'
+            message: 'A config file already exists. Overwrite?',
         })
         if (!answer) {
             console.error('Action canceled by user.')
@@ -51,7 +51,7 @@ const installer: Installer = program => {
 
             await mkdir(dirname(location), { recursive: true })
             await writeFile(location, JSON.stringify({
-                '$schema': '../node_modules/@actcoding/supa-cli/config.schema.json'
+                '$schema': '../node_modules/@actcoding/supa-cli/config.schema.json',
             }, null, 4))
 
             log(`Config file created at ${configFile}`)

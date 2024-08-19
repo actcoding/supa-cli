@@ -16,7 +16,7 @@ const actions: InstallerModule[] = [
     await import('@/actions/db/typegen.js'),
     await import('@/actions/db/reset.js'),
     await import('@/actions/email/compile.js'),
-    await import('@/actions/email/configure.js')
+    await import('@/actions/email/configure.js'),
 ]
 
 export default actions

@@ -53,7 +53,7 @@ const installer: Installer = program => {
             const namespaces = Array.from(new Set(commands
                 .map<string>(cmd => cmd._name)
                 .map(name => name.includes(':') ? name.slice(0, name.indexOf(':')) : '_global')
-                .sort()
+                .sort(),
             ))
 
             const list: List = {
@@ -67,7 +67,7 @@ const installer: Installer = program => {
                         commands: commands
                             .filter(cmd => id == '_global' ? !cmd._name.includes(':') : cmd._name.startsWith(id))
                             .map(cmd => cmd._name)
-                            .sort()
+                            .sort(),
                     }
                 }),
                 commands: commands.map(cmd => ({

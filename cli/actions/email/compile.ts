@@ -33,7 +33,7 @@ const installer: Installer = program => {
         .description('Compile and optionally deploy email templates')
         .addOption(
             new Option('--deploy', 'Enable deployment to linked Supabase project. (Implies --linked)')
-                .implies({ linked: true, })
+                .implies({ linked: true }),
         )
         .action(action<Options>(async ({ opts }) => {
             const projectRef = opts.deploy ? await supabaseProjectRef() : null

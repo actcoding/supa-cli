@@ -34,8 +34,7 @@
     "node": ">=14.8"
   },
   "devDependencies": {
-    "@actcoding/eslint-config": "^0.0.5",
-    "@inquirer/select": "^2.4.7",
+    "@actcoding/eslint-config": "^0.0.7",
     "@types/bun": "^1.1.6",
     "@types/ejs": "^3.1.5",
     "@types/hast": "^3.0.4",
@@ -60,6 +59,7 @@
     "@inquirer/confirm": "^3.1.20",
     "@inquirer/input": "^2.2.7",
     "@inquirer/password": "^2.1.20",
+    "@inquirer/select": "^2.4.7",
     "commander": "^12.1.0",
     "dayjs": "^1.11.12",
     "dotenv": "^16.4.5",

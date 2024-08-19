@@ -19,7 +19,7 @@ const installer: Installer = program => {
             const cmd = [
                 'supabase',
                 'db',
-                'reset'
+                'reset',
             ]
 
             cmd.push(opts.linked ? '--linked' : '--local')

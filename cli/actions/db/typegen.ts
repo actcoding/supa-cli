@@ -22,7 +22,7 @@ export async function generateTypes(opts: Options): Promise<void> {
         'gen',
         'types',
         '--schema', 'public',
-        '--lang', 'typescript'
+        '--lang', 'typescript',
     ]
 
     cmd.push(opts.linked ? '--linked' : '--local')

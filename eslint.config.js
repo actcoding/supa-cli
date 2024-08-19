@@ -6,9 +6,10 @@ const config = [
     {
         ignores: [
             '*.d.ts',
-            'supabase',
+            'supabase/',
+            '.venv',
         ],
-    }
+    },
 ]
 
 export default config
