@@ -65,15 +65,6 @@ const template = compile(`
     beautify: false,
 })
 
-const templateIndex = compile(`
-<% commands.forEach(function (cmd) { -%>
-- [<%= cmd.name %>](<%= cmd.link %>)
-<% }); -%>
-`, {
-    async: true,
-    beautify: false,
-})
-
 program.description('Generate documentation files for all CLI commands')
     .option('--force', 'Force the operation to run without asking for confirmation.', false)
     .action(async (opts: Options) => {
@@ -84,18 +75,11 @@ program.description('Generate documentation files for all CLI commands')
         process.env.__SCRIPT = '1'
         const { program } = await import('../cli/index')
 
-        const commands: { name: string, link: string }[] = []
-
         for await (const command of program.commands) {
             counter++
 
             const file = `${counter.toString().padStart(2, '0')}-${slug(command.name().replaceAll(':', '-'))}.md`
             const absolute = join(directory, file)
-
-            commands.push({
-                name: command.name(),
-                link: file,
-            })
 
             const markdown = await unified()
                 .use(remarkParse)
@@ -128,15 +112,7 @@ program.description('Generate documentation files for all CLI commands')
             await writeFile(absolute, String(markdown))
         }
 
-        const markdown = await unified()
-            .use(remarkParse)
-            .use(remarkStringify)
-            .process(await templateIndex({ commands }))
-
-        const file = join(directory, 'SUMMARY.md')
-        await writeFile(file, String(markdown))
-
-        log(`Created ${counter + 1} documentation files.`)
+        log(`Created ${counter} documentation files.`)
     })
 
 await program.parseAsync(process.argv)
