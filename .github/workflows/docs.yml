@@ -24,26 +24,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - uses: actions/cache/restore@v4
-        id: cache
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('bun.lockb') }}
-
-      - name: Install dependencies (bun)
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: bun install --frozen-lockfile
-
-      - uses: actions/cache/save@v4
-        if: steps.cache.outputs.cache-hit != 'true'
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-${{ hashFiles('bun.lockb') }}
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -51,9 +31,6 @@ jobs:
 
       - name: Install dependencies (python)
         run: pip install -r requirements.txt
-
-      - name: Generate documentation
-        run: bun run scripts/gen-actions-docs.ts --force
 
       - name: Build
         run: mkdocs build
