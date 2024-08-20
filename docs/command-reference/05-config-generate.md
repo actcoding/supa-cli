@@ -2,6 +2,12 @@
 
 > Generates a configuration file
 
+## Usage
+
+```shell
+config:generate [options]
+```
+
 ## Options
 
 ### Global

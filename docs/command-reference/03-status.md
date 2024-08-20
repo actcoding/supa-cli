@@ -1,6 +1,12 @@
 # status
 
-> supabase status but with --linked support.
+> supabase status but with --linked support
+
+## Usage
+
+```shell
+status [options]
+```
 
 ## Options
 

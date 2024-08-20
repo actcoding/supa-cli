@@ -2,6 +2,12 @@
 
 > Prints the effective config object
 
+## Usage
+
+```shell
+config:print [options]
+```
+
 ## Options
 
 ### Global

@@ -2,6 +2,12 @@
 
 > Create a new migration
 
+## Usage
+
+```shell
+make:migration [options] <name>
+```
+
 ## Arguments
 
 <small>Required arguments are marked with an asterik (\*)</small>

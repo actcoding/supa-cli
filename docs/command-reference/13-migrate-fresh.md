@@ -2,6 +2,12 @@
 
 > Drop all tables and re-run all migrations
 
+## Usage
+
+```shell
+migrate:fresh [options]
+```
+
 ## Options
 
 ### Global

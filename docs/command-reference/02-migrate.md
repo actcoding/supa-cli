@@ -2,6 +2,12 @@
 
 > Run the database migrations
 
+## Usage
+
+```shell
+migrate [options]
+```
+
 ## Options
 
 ### Local

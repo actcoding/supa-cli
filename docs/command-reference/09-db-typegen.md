@@ -2,6 +2,12 @@
 
 > Generate types from the database schema
 
+## Usage
+
+```shell
+db:typegen [options]
+```
+
 ## Options
 
 ### Local

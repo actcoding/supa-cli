@@ -2,6 +2,12 @@
 
 > Rollback the last database migration
 
+## Usage
+
+```shell
+migrate:rollback [options]
+```
+
 ## Options
 
 ### Local

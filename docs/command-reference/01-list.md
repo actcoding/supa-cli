@@ -2,6 +2,12 @@
 
 > List commands
 
+## Usage
+
+```shell
+list [options]
+```
+
 ## Options
 
 ### Local

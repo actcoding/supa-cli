@@ -1,6 +1,12 @@
 # email:configure
 
-> Helps with configuring email templates.
+> Helps with configuring email templates
+
+## Usage
+
+```shell
+email:configure [options]
+```
 
 ## Options
 

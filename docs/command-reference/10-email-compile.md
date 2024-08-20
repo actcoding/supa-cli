@@ -1,6 +1,12 @@
 # email:compile
 
-> Compile and optionally deploy email templates.
+> Compile and optionally deploy email templates
+
+## Usage
+
+```shell
+email:compile [options]
+```
 
 ## Options
 

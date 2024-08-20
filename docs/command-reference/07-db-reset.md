@@ -2,6 +2,12 @@
 
 > Re-creates the local database
 
+## Usage
+
+```shell
+db:reset [options]
+```
+
 ## Options
 
 ### Local

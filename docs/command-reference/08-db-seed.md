@@ -2,6 +2,12 @@
 
 > Seed the database
 
+## Usage
+
+```shell
+db:seed [options]
+```
+
 ## Options
 
 ### Local

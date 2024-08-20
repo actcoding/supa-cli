@@ -2,6 +2,12 @@
 
 > Login to Supabase and retrieve the JWT
 
+## Usage
+
+```shell
+auth:jwt [options]
+```
+
 ## Options
 
 ### Local

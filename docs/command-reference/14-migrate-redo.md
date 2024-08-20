@@ -2,6 +2,12 @@
 
 > Rollback and re-run the last database migration
 
+## Usage
+
+```shell
+migrate:redo [options]
+```
+
 ## Options
 
 ### Global

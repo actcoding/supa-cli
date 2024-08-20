@@ -21,6 +21,13 @@ theme:
     scheme: act
   custom_dir: docs/overrides
 
+nav:
+  - index.md
+  - installation.md
+  - configuration.md
+  - Command Reference: command-reference/
+  - API Reference: api-reference/
+
 extra:
   generator: true
 
@@ -29,6 +36,10 @@ plugins:
   - offline
   - git-revision-date-localized:
       enabled: true
+  - autorefs
+  - literate-nav:
+      nav_file: SUMMARY.md
+      implicit_index: true
 
 extra_css:
   - _css/extra.css

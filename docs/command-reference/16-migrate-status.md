@@ -2,6 +2,12 @@
 
 > Shows ran migrations
 
+## Usage
+
+```shell
+migrate:status [options]
+```
+
 ## Options
 
 ### Global
