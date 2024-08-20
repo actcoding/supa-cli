@@ -4,17 +4,11 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - docs/**
-      - mkdocs.yml
     tags:
       - "v*.*.*"
   pull_request:
     branches:
       - main
-    paths-ignore:
-      - docs/**
-      - mkdocs.yml
 
 jobs:
   build:
