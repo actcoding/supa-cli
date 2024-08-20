@@ -176,3 +176,6 @@ dist
 
 .venv
 .docs
+
+docs/command-reference
+docs/api-reference
