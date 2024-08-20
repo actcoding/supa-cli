@@ -3,7 +3,6 @@
   "description": "Advanced CLI tooling for Supabase.",
   "version": "0.1.0",
   "license": "MIT",
-  "module": "./dist/index.js",
   "type": "module",
   "homepage": "https://actcoding.github.io/supa-cli/",
   "repository": {
@@ -19,6 +18,9 @@
     "gen:supabase-api": " generate -i https://api.supabase.com/api/v1-json -o cli/generated/supabase-api -g typescript-fetch",
     "docs:serve": "./.venv/bin/mkdocs serve",
     "docs:build": "./.venv/bin/mkdocs build"
+  },
+  "exports": {
+    ".": "./dist/public.js"
   },
   "files": [
     "./dist/",
