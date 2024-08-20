@@ -18,7 +18,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: Build package
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -46,15 +46,25 @@ jobs:
       - name: Build
         run: bun run build
 
+      - name: Generate documentation
+        run: |
+          bun run scripts/gen-docs-actions.ts --force && \
+          bun run scripts/gen-docs-api.ts --force
+
       - uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist/
 
-  publish:
+      - uses: actions/upload-artifact@v4
+        with:
+          name: docs
+          path: docs/
+
+  publish-npm:
     name: Publish to npm
     runs-on: ubuntu-latest
-    if: startsWith('refs/tags/', github.ref)
+    if: startsWith(github.ref, 'refs/tags/')
     needs:
       - build
     steps:
@@ -84,3 +94,52 @@ jobs:
           body: |
             ## Changelog
             ${{ steps.extract-changelog.outputs.markdown }}
+
+  build-docs:
+    name: Build documentation
+    runs-on: ubuntu-latest
+    needs:
+      - build
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Install dependencies (python)
+        run: pip install -r requirements.txt
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          run-id: ${{ github.run_id }}
+          name: docs
+          path: docs/
+
+      - name: Build
+        run: mkdocs build
+
+      - name: Upload artifact for deployment
+        uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        with:
+          path: .docs/
+
+  deploy-docs:
+    name: Deploy documentation to GH Pages
+    runs-on: ubuntu-latest
+    needs:
+      - build-docs
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    if: github.event_name != 'pull_request'
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
