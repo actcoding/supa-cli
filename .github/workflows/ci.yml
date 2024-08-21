@@ -47,6 +47,7 @@ jobs:
           bun run scripts/gen-config-schema.ts
 
       - uses: actions/upload-artifact@v4
+        if: ${{ startsWith(github.ref, 'refs/tags/') }}
         with:
           name: dist
           path: |
