@@ -43,12 +43,15 @@ jobs:
       - name: Generate documentation
         run: |
           bun run scripts/gen-docs-actions.ts --force && \
-          bun run scripts/gen-docs-api.ts --force
+          bun run scripts/gen-docs-api.ts --force && \
+          bun run scripts/gen-config-schema.ts
 
       - uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: dist/
+          path: |
+            dist/
+            config.schema.json
           retention-days: 7
 
       - uses: actions/upload-artifact@v4
