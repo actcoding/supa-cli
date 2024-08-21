@@ -4,10 +4,12 @@ import { configActDefault } from '@actcoding/eslint-config'
 const config = [
     ...configActDefault,
     {
+        name: 'supa-cli/ignores',
         ignores: [
             '*.d.ts',
             'supabase/',
             '.venv',
+            '.cache/',
         ],
     },
 ]
