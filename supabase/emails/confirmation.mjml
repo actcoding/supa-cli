@@ -4,7 +4,7 @@
     <mj-section background-color="#ffffff">
       <mj-column>
 
-        <mj-image width="192px" src="https://prod.contenttool.fbathletic.actcoding.de/assets/icon_dark-DvY-flo7.png"></mj-image>
+        <mj-image width="192px" src="/resources/brand-assets/supabase-logo-wordmark--light.svg"></mj-image>
         <mj-divider border-color="#3ECF8E"></mj-divider>
 
       </mj-column>
