@@ -2,7 +2,7 @@
 
 !!! warning
 
-    Before configuring the CLI, make sure to set the [**required environment variables**](01-installation.md#environment).
+    Before configuring the CLI, make sure to set the [**required environment variables**](installation.md#environment).
 
 While the CLI generally follows a *zero-config* approach, there are options you might want to configure.
 
