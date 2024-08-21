@@ -19,11 +19,16 @@ type Options = {
 
 const template = compile(`
 Title:   <%= name %>
-Summary: <%= description %>
 
-# \`<%= name %>(): <%= returns.type %>\`
+# \`<%= name %>\`
 
 > <%= description %>
+
+## Signature
+
+\`\`\`js
+<%= name %>(<%= signature %>): <%= returns.type %>
+\`\`\`
 
 ## Return value
 
@@ -126,6 +131,7 @@ program.description('Generate documentation files for all exported API symbols.'
                     .process(await template({
                         name: node.declaration.id.name,
                         description: parsedComment.description,
+                        signature: params.map(param => `${param.name}: ${param.type}`).join(', '),
                         params, returns, examples,
                     }))
 
