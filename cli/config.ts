@@ -37,7 +37,7 @@ async function load<T>(file?: string): Promise<T> {
     }
 }
 
-const defaults: Config = {
+export const defaults: Config = {
     typeFiles: [
         'db.ts',
     ],
