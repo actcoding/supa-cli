@@ -27,7 +27,7 @@ Title:   <%= name %>
 ## Signature
 
 \`\`\`js
-<%= name %>(<%= signature %>): <%= returns.type %>
+<%= async ? 'async ' : ''%>function <%= name %>(<%= signature %>): <%- async ? 'Promise<' + returns.type + '>' : returns.type %>
 \`\`\`
 
 ## Return value
@@ -131,6 +131,7 @@ program.description('Generate documentation files for all exported API symbols.'
                     .process(await template({
                         name: node.declaration.id.name,
                         description: parsedComment.description,
+                        async: node.declaration.async,
                         signature: params.map(param => `${param.name}: ${param.type}`).join(', '),
                         params, returns, examples,
                     }))
