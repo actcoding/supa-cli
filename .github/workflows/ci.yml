@@ -63,6 +63,8 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/')
     needs:
       - build
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -94,6 +96,7 @@ jobs:
   build-docs:
     name: Build documentation
     runs-on: ubuntu-latest
+    if: ! startsWith(github.ref, 'refs/tags/')
     needs:
       - build
     steps:
@@ -135,7 +138,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request' && ! startsWith(github.ref, 'refs/tags/')
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
