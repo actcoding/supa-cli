@@ -1,6 +1,7 @@
 import config from '@/config.js'
 import type { GlobalOptions, Installer } from '@/types.js'
 import { action, supabaseProjectRef } from '@/utils.js'
+import interpose from '@/utils/interpose.js'
 import { Option } from 'commander'
 import { log } from 'console'
 import { getProperty } from 'dot-prop'
@@ -44,26 +45,25 @@ function ejsTranslate(translations: Translations) {
             } else {
                 return `{{ else if eq .Data.${config.i18n.attribute} "${lang}" }}`
             }
-        }).concat('{{ end }}')
+        }).concat('{{ else }}', '{{ end }}')
 
-        let cursor = 0
-        const result = []
-        const max = branches.length * 2 - 1
-        for (let i = 0; i < max; i++) {
-            if (i % 2 === 0) {
-                result.push(branches[cursor++])
-            } else {
-                result.push(getProperty(
-                    translations[languages[cursor - 1]],
-                    key,
-                    getProperty(
-                        translations[config.i18n.default],
-                        key,
-                        '!!MISSING TRANSLATION KEY!!',
-                    ),
-                ))
+        const result = interpose(branches, ({ cursor, last }) => {
+            const _default = getProperty(
+                translations[config.i18n.default],
+                key,
+                '!!MISSING TRANSLATION KEY!!',
+            )
+
+            if (last) {
+                return _default
             }
-        }
+
+            return getProperty(
+                translations[languages[cursor - 1]],
+                key,
+                _default,
+            )
+        })
 
         return result.join('\n')
     }
@@ -108,7 +108,7 @@ const installer: Installer = program => {
                     const compiled = await template({
                         __: ejsTranslate(languageMap),
                     })
-                    const converted = convert(compiled, {
+                    const converted = convertMjml(compiled, {
                         filePath: abs,
                     })
 
@@ -170,7 +170,7 @@ type ConvertResults = {
     error: null
 } & MJMLParseResults
 
-function convert(input: string, options?: MJMLParsingOptions): ConvertResults {
+function convertMjml(input: string, options?: MJMLParsingOptions): ConvertResults {
     try {
         const results = mjml2html(input, options)
         return {

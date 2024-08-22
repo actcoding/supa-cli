@@ -6,7 +6,7 @@ const config = [
     {
         ignores: [
             '*.d.ts',
-            'supabase/',
+            'supabase/functions',
             '.venv',
         ],
     },
