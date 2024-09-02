@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0.00 0.00% 100.00%;
+        --foreground: 152.00 55.56% 5.29%;
+
+        --primary: 153.10 60.17% 52.75%;
+        --primary-foreground: 152.00 55.56% 5.29%;
+
+        --card: 150.00 66.67% 97.65%;
+        --card-foreground: 152.00 55.56% 5.29%;
+
+        --popover: 0.00 0.00% 100.00%;
+        --popover-foreground: 152.00 55.56% 5.29%;
+
+        --secondary: 152.73 61.11% 92.94%;
+        --secondary-foreground: 0.00 0.00% 0.00%;
+
+        --muted: 154.29 58.33% 95.29%;
+        --muted-foreground: 0.00 0.00% 40.00%;
+
+        --accent: 154.29 58.33% 95.29%;
+        --accent-foreground: 152.73 55.00% 7.84%;
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 153.10 59.18% 90.39%;
+        --input: 153.33 19.15% 81.57%;
+        --ring: 153.10 60.17% 52.75%;
+
+        --chart-1: 153.10 60.17% 52.75%;
+        --chart-2: 153.17 60.00% 59.80%;
+        --chart-3: 153.19 60.26% 69.41%;
+        --chart-4: 153.00 60.61% 74.12%;
+        --chart-5: 153.23 59.63% 78.63%;
+
+        --radius: 0.5rem;
+    }
+
+    .dark {
+        --background: 0.00 0.00% 0.00%;
+        --foreground: 152.73 61.11% 92.94%;
+
+        --primary: 153.10 60.17% 52.75%;
+        --primary-foreground: 152.00 55.56% 5.29%;
+
+        --card: 150.00 20.00% 5.88%;
+        --card-foreground: 152.73 61.11% 92.94%;
+
+        --popover: 0.00 0.00% 0.00%;
+        --popover-foreground: 152.73 61.11% 92.94%;
+
+        --secondary: 153.60 53.19% 18.43%;
+        --secondary-foreground: 0.00 0.00% 100.00%;
+
+        --muted: 0.00 0.00% 9.80%;
+        --muted-foreground: 0.00 0.00% 50.20%;
+
+        --accent: 153.60 53.19% 18.43%;
+        --accent-foreground: 152.73 61.11% 92.94%;
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 153.10 54.72% 10.39%;
+        --input: 152.00 14.56% 20.20%;
+        --ring: 153.10 60.17% 52.75%;
+
+        --chart-1: 153.10 60.17% 52.75%;
+        --chart-2: 153.17 53.71% 44.90%;
+        --chart-3: 152.84 54.29% 34.31%;
+        --chart-4: 153.00 54.05% 29.02%;
+        --chart-5: 153.23 53.72% 23.73%;
+
+        --radius: 0.5rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
