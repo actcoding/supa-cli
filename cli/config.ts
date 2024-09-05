@@ -12,8 +12,8 @@ async function selectFile(): Promise<string|undefined> {
     for await (const location of locations) {
         try {
             const path = join(...location)
-            const { isFile } = await stat(path)
-            if (isFile()) {
+            const stats = await stat(path)
+            if (stats.isFile()) {
                 return join(process.cwd(), path)
             }
         } catch (error) {
