@@ -1,7 +1,8 @@
 import config from '@/config.js'
 import type { GlobalOptions, Installer } from '@/types.js'
 import { action, supabase } from '@/utils.js'
-import { writeFile } from 'fs/promises'
+import { mkdir, writeFile } from 'fs/promises'
+import { dirname } from 'path'
 
 type Options = GlobalOptions & {
 }
@@ -32,7 +33,11 @@ export async function generateTypes(opts: Options): Promise<void> {
 
     const types = await supabase(cmd, { captureStdout: true, pipeStdin: true }) as Buffer
     const processed = convertUnionToEnums(types.toString('utf8'))
-    await Promise.all(files.map(file => writeFile(file, processed)))
+    await Promise.all(files.map(async (file) => {
+        const parents = dirname(file)
+        await mkdir(parents, { recursive: true })
+        await writeFile(file, processed)
+    }))
 }
 
 function removeIndentation(input: string): string {
