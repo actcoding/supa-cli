@@ -12,13 +12,15 @@
 
     <mj-section background-color="#ffffff">
     	<mj-column>
-      	<mj-text font-size="20px" color="#3ECF8E" font-weight="bold">Hello World</mj-text>
-        <mj-text>
-        	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+      	<mj-text font-size="20px" color="#3ECF8E" font-weight="bold">
+          <%- __("confirmation.title") %>
         </mj-text>
 
         <mj-text>
-        	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        	<%- __("confirmation.text1") %>
+        </mj-text>
+        <mj-text>
+        	<%- __("confirmation.text2") %>
         </mj-text>
       </mj-column>
     </mj-section>
@@ -38,7 +40,7 @@
       <mj-column>
 
         <mj-text align="center" font-size="11px">
-          Copyright (c) [NAME] [YEAR]
+          Copyright (c) act coding GbR {{ now.UTC.Year }}
         </mj-text>
 
       </mj-column>

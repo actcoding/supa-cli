@@ -1,7 +1,11 @@
+import config from '@/config.js'
 import type { GlobalOptions, Installer } from '@/types.js'
 import { action, supabaseProjectRef } from '@/utils.js'
+import interpose from '@/utils/interpose.js'
 import { Option } from 'commander'
 import { log } from 'console'
+import { getProperty } from 'dot-prop'
+import { compile } from 'ejs'
 import { readFile, writeFile } from 'fs/promises'
 import { glob } from 'glob'
 import type { Root } from 'hast'
@@ -14,6 +18,7 @@ import rehypeMinify from 'rehype-preset-minify'
 import rehypeStringify from 'rehype-stringify'
 
 const directory = resolve('supabase/emails')
+const i18n = resolve('supabase/i18n')
 
 const supabaseConfigMap: Record<string, string> = {
     'confirmation': 'mailer_templates_confirmation_content',
@@ -25,18 +30,62 @@ const supabaseConfigMap: Record<string, string> = {
 }
 
 type Options = GlobalOptions & {
+    minify: boolean
     deploy: boolean
+}
+
+type Translations = Record<string, Record<string, unknown>>
+
+function ejsTranslate(translations: Translations) {
+    return (key: string) => {
+        const languages = Object.keys(translations)
+        const branches = languages.map((lang, index) => {
+            if (index === 0) {
+                return `{{ if eq .Data.${config.i18n.attribute} "${lang}" }}`
+            } else {
+                return `{{ else if eq .Data.${config.i18n.attribute} "${lang}" }}`
+            }
+        }).concat('{{ else }}', '{{ end }}')
+
+        const result = interpose(branches, ({ cursor, last }) => {
+            const _default = getProperty(
+                translations[config.i18n.default],
+                key,
+                '!!MISSING TRANSLATION KEY!!',
+            )
+
+            if (last) {
+                return _default
+            }
+
+            return getProperty(
+                translations[languages[cursor - 1]],
+                key,
+                _default,
+            )
+        })
+
+        return result.join('\n')
+    }
 }
 
 const installer: Installer = program => {
     program.command('email:compile')
         .description('Compile and optionally deploy email templates')
+        .option('--no-minify', 'Disable minifying of the result files.')
         .addOption(
             new Option('--deploy', 'Enable deployment to linked Supabase project. (Implies --linked)')
                 .implies({ linked: true }),
         )
         .action(action<Options>(async ({ opts }) => {
             const projectRef = opts.deploy ? await supabaseProjectRef() : null
+
+            const languages = await glob('*.js', { cwd: i18n })
+            const languageMap: Translations = {}
+            for await (const language of languages) {
+                const { default: data } = await import(`${i18n}/${language}`)
+                languageMap[basename(language, '.js')] = data
+            }
 
             const files = await glob('*.mjml', { cwd: directory })
             files.sort()
@@ -50,8 +99,16 @@ const installer: Installer = program => {
                     log(`Processing file ${file} (${++i}/${files.length}) …`)
 
                     const abs = join(directory, file)
-                    const template = await readFile(abs)
-                    const converted = convert(template.toString('utf8'), {
+                    const contents = await readFile(abs)
+                    const template = compile(contents.toString('utf8'), {
+                        async: true,
+                        beautify: false,
+                        cache: true,
+                    })
+                    const compiled = await template({
+                        __: ejsTranslate(languageMap),
+                    })
+                    const converted = convertMjml(compiled, {
                         filePath: abs,
                     })
 
@@ -69,7 +126,7 @@ const installer: Installer = program => {
 
                     const result = await rehype()
                         .use(inlineImages)
-                        .use(rehypeMinify)
+                        .use(opts.minify ? rehypeMinify : null)
                         .use(rehypeStringify)
                         .process(html)
 
@@ -113,7 +170,7 @@ type ConvertResults = {
     error: null
 } & MJMLParseResults
 
-function convert(input: string, options?: MJMLParsingOptions): ConvertResults {
+function convertMjml(input: string, options?: MJMLParsingOptions): ConvertResults {
     try {
         const results = mjml2html(input, options)
         return {

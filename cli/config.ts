@@ -41,6 +41,10 @@ export const defaults: Config = {
     typeFiles: [
         'db.ts',
     ],
+    i18n: {
+        attribute: 'language',
+        default: 'en',
+    },
 }
 
 const configFile = await selectFile()

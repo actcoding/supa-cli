@@ -7,7 +7,7 @@ const config = [
         name: 'supa-cli/ignores',
         ignores: [
             '*.d.ts',
-            'supabase/',
+            'supabase/functions',
             '.venv',
             '.cache/',
         ],
