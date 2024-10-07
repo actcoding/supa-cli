@@ -25,13 +25,5 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false,
-
-    // Cleaner imports
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "./cli/*"
-      ]
-    }
   }
 }

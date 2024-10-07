@@ -181,3 +181,5 @@ docs/command-reference
 docs/api-reference
 
 config.schema.json
+
+web/src/lib/generated

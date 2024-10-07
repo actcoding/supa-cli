@@ -1,0 +1,15 @@
+{
+  "fmt": {
+    "include": [
+      "supabase/functions",
+      "packages/deno"
+    ],
+    "useTabs": false,
+    "indentWidth": 4,
+    "semiColons": false,
+    "singleQuote": true
+  },
+  "imports": {
+    "@actcoding/supa-deno": "./packages/deno/lib/mod.ts"
+  }
+}

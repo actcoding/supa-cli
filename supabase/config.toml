@@ -120,24 +120,6 @@ max_frequency = "1s"
 # admin_email = "admin@email.com"
 # sender_name = "Admin"
 
-[auth.email.template.invite]
-content_path = "./supabase/emails/invite.mjml.html"
-
-[auth.email.template.confirmation]
-content_path = "./supabase/emails/confirmation.mjml.html"
-
-[auth.email.template.recovery]
-content_path = "./supabase/emails/recovery.mjml.html"
-
-[auth.email.template.magic_link]
-content_path = "./supabase/emails/magic_link.mjml.html"
-
-[auth.email.template.email_change]
-content_path = "./supabase/emails/email_change.mjml.html"
-
-[auth.email.template.reauthentication]
-content_path = "./supabase/emails/reauthentication.mjml.html"
-
 # Uncomment to customize email template
 # [auth.email.template.invite]
 # subject = "You have been invited"

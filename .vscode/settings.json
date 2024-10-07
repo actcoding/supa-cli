@@ -1,4 +1,5 @@
 {
+  "workbench.colorTheme": "Moonlight II",
   "files.associations": {
     "supa": "shellscript",
     "*.mjml": "mjml"
@@ -21,6 +22,10 @@
     "editor.formatOnSave": true,
   },
 
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+
   "yaml.schemas": {
     "https://squidfunk.github.io/mkdocs-material/schema.json": "mkdocs.yml"
   },
@@ -34,11 +39,10 @@
   ],
 
   "deno.enablePaths": [
-    "supabase/functions"
+    "supabase/functions",
+    "packages/deno"
   ],
   "deno.lint": true,
-  "deno.unstable": true,
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  },
+  "deno.config": "deno.json",
+  "deno.importMap": "deno.json",
 }

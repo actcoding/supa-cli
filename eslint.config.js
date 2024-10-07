@@ -10,6 +10,7 @@ const config = [
             'supabase/',
             '.venv',
             '.cache/',
+            '**/db.ts',
         ],
     },
 ]

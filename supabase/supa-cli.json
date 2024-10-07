@@ -1,0 +1,7 @@
+{
+    "$schema": "../config.schema.json",
+    "typeFiles": [
+        "web/src/lib/generated/db.ts",
+        "supabase/functions/db.ts"
+    ]
+}
