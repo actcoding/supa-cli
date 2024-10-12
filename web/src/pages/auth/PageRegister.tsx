@@ -3,7 +3,11 @@ import { Button } from '@/components/ui/button.tsx'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form.tsx'
 import { Input } from '@/components/ui/input.tsx'
 import { useToast } from '@/components/ui/use-toast.ts'
+import { cn } from '@/lib/utils.ts'
+import { faRotate } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useMutation } from '@tanstack/react-query'
 import { useCallback } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -27,6 +31,7 @@ const formSchema = z.object({
 type FormSchema = z.infer<typeof formSchema>
 
 export default function PageRegister() {
+    const { toast } = useToast()
     const form = useForm<FormSchema>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -38,33 +43,41 @@ export default function PageRegister() {
         },
     })
 
-    const { toast } = useToast()
-    const onSubmit = useCallback(async (values: FormSchema) => {
-        const { error } = await supabase.auth.signUp({
-            email: values.email,
-            password: values.password,
-            options: {
-                data: {
-                    firstname: values.firstname,
-                    lastname: values.lastname,
+    const submit = useMutation({
+        mutationFn: async (values: FormSchema) => {
+            const { error, data } = await supabase.auth.signUp({
+                email: values.email,
+                password: values.password,
+                options: {
+                    emailRedirectTo: import.meta.env.BASE_URL,
+                    data: {
+                        firstname: values.firstname,
+                        lastname: values.lastname,
+                    },
                 },
-            },
-        })
+            })
 
-        if (error) {
-            toast({
-                title: 'Error',
-                description: error.message,
-                variant: 'destructive',
-            })
-        } else {
-            window.location.hash = 'login'
-            toast({
-                title: 'Success',
-                description: 'An account has been created. You may login now.',
-            })
-        }
-    }, [])
+            if (error) {
+                toast({
+                    title: 'Error',
+                    description: error.message,
+                    variant: 'destructive',
+                })
+            } else {
+                const mustConfirm = data.session === null
+                const message = mustConfirm
+                    ? 'An account has been created. Check your emails to confirm it.'
+                    : 'An account has been created. You may login now.'
+
+                toast({
+                    title: 'Success',
+                    description: message,
+                })
+            }
+        },
+    })
+
+    const onSubmit = useCallback((values: FormSchema) => submit.mutateAsync(values), [submit])
 
     return (
         <Form {...form}>
@@ -152,8 +165,15 @@ export default function PageRegister() {
                     type='submit'
                     size='lg'
                     className='w-full'
+                    variant={submit.isPending ? 'outline' : 'default'}
+                    disabled={submit.isPending}
                 >
-                    Register
+                    <span>Register</span>
+                    <FontAwesomeIcon
+                        icon={faRotate}
+                        className={cn('ml-1', { 'hidden': !submit.isPending })}
+                        spin
+                    />
                 </Button>
             </form>
         </Form>

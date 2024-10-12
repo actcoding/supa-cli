@@ -1,0 +1,11 @@
+{
+  "fmt": {
+    "include": [
+      "supabase/functions"
+    ],
+    "indentWidth": 4,
+    "semiColons": false,
+    "singleQuote": true,
+    "useTabs": false
+  }
+}

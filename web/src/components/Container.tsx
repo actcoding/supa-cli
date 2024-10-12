@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils.ts'
 import { cva, VariantProps } from 'class-variance-authority'
-import { HTMLAttributes, PropsWithChildren } from 'react'
+import { ElementType, HTMLAttributes, PropsWithChildren } from 'react'
+import type { Simplify } from 'type-fest'
 
 const containerVariants = cva(
     'container flex flex-col gap-y-6',
@@ -17,15 +18,23 @@ const containerVariants = cva(
     },
 )
 
-type Props = PropsWithChildren<HTMLAttributes<HTMLDivElement>> & VariantProps<typeof containerVariants>
+type Props<T extends ElementType> = Simplify<
+    PropsWithChildren<HTMLAttributes<HTMLDivElement>> &
+    VariantProps<typeof containerVariants> &
+    {
+        as?: T
+    }
+>
 
-export default function Container({ className, variant, children, ...props}: Props) {
+
+export default function Container<T extends ElementType>({ className, variant, children, as, ...props}: Props<T>) {
+    const Comp = as ?? 'div'
     return (
-        <div
+        <Comp
             className={cn(containerVariants({ className, variant }))}
             {...props}
         >
             {children}
-        </div>
+        </Comp>
     )
 }

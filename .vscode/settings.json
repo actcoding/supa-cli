@@ -1,7 +1,7 @@
 {
   "files.associations": {
     "supa": "shellscript",
-    "*.mjml": "mjml"
+    "*.mjml": "html"
   },
   "editor.defaultFormatter": null,
   "editor.linkedEditing": true,
@@ -37,7 +37,8 @@
     "supabase/functions"
   ],
   "deno.lint": true,
-  "deno.unstable": true,
+  "deno.config": "./deno.json",
+  "deno.importMap": "./deno.json",
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },

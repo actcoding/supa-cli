@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Supabase - Serve Functions",
+      "command": "bunx supabase functions serve --env-file .env",
+      "type": "shell",
+      "args": [],
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "silent"
+      },
+      "group": "test"
+    },
+    {
+      "label": "Web - Dev",
+      "command": "bun run dev",
+      "type": "shell",
+      "args": [],
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}/web"
+      },
+      "presentation": {
+        "reveal": "silent"
+      },
+      "group": "test"
+    }
+  ]
+}

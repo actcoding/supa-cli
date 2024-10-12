@@ -1,23 +1,21 @@
-import SupabaseProvider, { useSupabase } from '@/components/supabase/Provider.tsx'
+import SupabaseProvider from '@/components/supabase/Provider.tsx'
 import { Toaster } from '@/components/ui/toaster.tsx'
-import PageAuth from '@/pages/auth/PageAuth.tsx'
-import PageHome from '@/pages/home/PageHome.tsx'
+import AppRouter from '@/router.tsx'
+import {
+    QueryClient,
+    QueryClientProvider,
+} from '@tanstack/react-query'
 
-export function Switch() {
-    const { session } = useSupabase()
-
-    if (session) {
-        return <PageHome />
-    }
-
-    return <PageAuth />
-}
+const queryClient = new QueryClient()
 
 export default function App() {
     return (<>
         <SupabaseProvider>
-            <Switch />
+            <QueryClientProvider client={queryClient}>
+                <AppRouter />
+            </QueryClientProvider>
         </SupabaseProvider>
+
         <Toaster />
     </>)
 }

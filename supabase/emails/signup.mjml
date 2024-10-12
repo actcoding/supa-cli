@@ -1,0 +1,64 @@
+<mjml>
+  <mj-body background-color="#f1f5f9">
+    <mj-section background-color="#ffffff">
+      <mj-column>
+
+        <mj-image width="192px" src="supabase:///supabase-logo-wordmark--light.svg"></mj-image>
+        <mj-divider border-color="#3ECF8E"></mj-divider>
+
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff">
+    	<mj-column>
+      	<mj-text font-size="20px" color="#3ECF8E" font-weight="bold">
+          Signup Request
+        </mj-text>
+        <mj-text>
+        	Hello there! We have received a request to create a new account using your email address <b><%= locals.email %></b>
+        </mj-text>
+
+        <mj-text>
+          Please use the following link to confirm and activate your account:
+        </mj-text>
+
+        <mj-spacer height="25px" />
+
+        <mj-button
+          background-color="#3ECF8E"
+          font-weight="bold"
+          href="<%= locals.site_url %>/auth/confirm?token=<%= locals.token_hash %>&email=<%= encodeURIComponent(locals.email) %>"
+        >
+          Confirm my account
+        </mj-button>
+
+        <mj-spacer height="25px" />
+
+        <mj-text>
+          If you believe this is an error, you can safely delete this email.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section background-color="#ffffff">
+      <mj-column>
+
+        <mj-divider border-color="#3ECF8E"></mj-divider>
+        <mj-text align="center">
+          Footer
+        </mj-text>
+
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+
+        <mj-text align="center" font-size="11px">
+          Copyright (c) act coding GbR <%= new Date().getFullYear() %>
+        </mj-text>
+
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
