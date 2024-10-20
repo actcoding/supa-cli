@@ -6,7 +6,7 @@ import { resolve } from 'path'
 import { MIGRATIONS_DIRECTORY } from '../migrate/index.js'
 
 const template = `
-import { ColumnDefinitions, MigrationBuilder } from 'node-pg-migrate'
+import type { ColumnDefinitions, MigrationBuilder } from 'node-pg-migrate'
 
 export const shorthands: ColumnDefinitions | undefined = undefined
 
