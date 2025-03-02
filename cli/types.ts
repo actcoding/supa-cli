@@ -3,6 +3,10 @@ import { z } from 'zod'
 
 export type Config = {
     typeFiles: string[]
+    i18n: {
+        attribute: string
+        default: string
+    }
 }
 
 export const globalOptionsSchema = z.object({

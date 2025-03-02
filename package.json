@@ -69,6 +69,7 @@
     "@inquirer/select": "^2.4.7",
     "commander": "^12.1.0",
     "dayjs": "^1.11.12",
+    "dot-prop": "^9.0.0",
     "dotenv": "^16.4.5",
     "glob": "^11.0.0",
     "hast-util-select": "^6.0.2",
